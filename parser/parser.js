@@ -408,7 +408,7 @@ class Parser {
             let operator = this.previous();
             let right = arguments[0] === 'key' ? this.primary() : this.item('value');
             if (right !== null) {
-                if (right.type !== types.WORD && !(right instanceof ValueRange || right instanceof QuotedText)) {
+                if (right.type !== types.WORD && right.type !== types.COMPLEX_VALUE && !(right instanceof ValueRange || right instanceof QuotedText)) {
                     this.current--;
                     return  operator;
                 }
